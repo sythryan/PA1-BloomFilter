@@ -2466,3 +2466,6 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY org.eclipse.core.resources 4 567 2016-09-27 12:53:11.708
 !MESSAGE The project description file (.project) for 'BloomFilterCOMS_535' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
+
+!ENTRY org.eclipse.core.resources 4 567 2016-09-27 12:55:31.969
+!MESSAGE The project description file (.project) for 'BloomFilterCOMS_535' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.

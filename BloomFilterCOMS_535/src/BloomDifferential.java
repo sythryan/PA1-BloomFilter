@@ -21,20 +21,6 @@ public class BloomDifferential {
 		DeterministicFilter.appears(key);
 	}
 	
-	private void populateFilter() {
-		try {
-			FileReader reader = new FileReader(diffFile);
-		
-	        while (numberReader.readLine() != null){
-	        	lineCount++;
-	        }
-	
-	        numberReader.close();
-		} catch(IOException e) {
-			System.out.println(e);
-		}
-	}
-	
 	private int countAllLines() {
 		int lineCount = 1;
 		try {
