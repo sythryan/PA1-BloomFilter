@@ -1,0 +1,9 @@
+
+public class EmpericalComparison {
+
+	public static void main(String[] args) {
+		BloomDifferential bD = new BloomDifferential();
+		bD.creatFilter();
+	}
+
+}

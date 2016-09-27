@@ -1,0 +1,38 @@
+
+public class FalsePositives {
+
+	public static void main(String[] args) {
+		
+		int bitsPerElement = 3;
+		int setSize	= 26;
+		
+		int detFalsePositiveCount = 0;
+		int ranFalsePositiveCount = 0;
+		
+		BloomFilterDet deterministicFilter = new BloomFilterDet(setSize, bitsPerElement);
+		BloomFilterRan randomFilter = new BloomFilterRan(setSize, bitsPerElement);
+		
+		// fill filters
+		for (int i = 0; i < setSize; i++) {
+			deterministicFilter.add(""+i);
+			randomFilter.add(""+i);
+		}
+		
+		for (int i = setSize; i < setSize * 2; i++) {
+			if (deterministicFilter.appears(""+i)) {
+				detFalsePositiveCount++;
+			}
+			
+			if (randomFilter.appears(""+i)) {
+				ranFalsePositiveCount++;
+			}
+		}
+		
+		System.out.println("Deterministic False Positive Count: " + detFalsePositiveCount + " out of " + setSize);
+		System.out.println("Random False Positive Count: " + ranFalsePositiveCount + " out of " + setSize);
+		System.out.println("");
+		System.out.println("Deterministic False Positive percent: " + (int)((double)detFalsePositiveCount / (double)setSize) + "%");
+		System.out.println("Deterministic False Positive percent: " + (int)((double)ranFalsePositiveCount / (double)setSize * 100.0)  + "%");
+	}
+
+}

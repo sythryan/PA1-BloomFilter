@@ -1,0 +1,30 @@
+import java.util.Scanner;
+public class Main {
+
+	static BloomFilterDet DeterministicFilter;
+	
+	public static void main(String[] args) {
+		int choice;
+		int setSize;
+		int bitsPerElement;
+ 
+      Scanner in = new Scanner(System.in);
+	 
+      System.out.println("Please select a number");
+	  System.out.println("1 - Enter Set Size");
+	  System.out.println("2 - Enter BitsPerElement");
+	  System.out.println("3 - Add an Element");
+	  System.out.println("4 - Find an Element");
+	      setSize = in.nextInt();
+	 
+      System.out.println("Enter your bitsPetElement");
+	  bitsPerElement = in.nextInt();
+	  
+	  DeterministicFilter = new BloomFilterDet(setSize, bitsPerElement);
+	  
+	  System.out.println("Generating bloom filter...");
+	  System.out.println("Number of hash functions needed:  " + DeterministicFilter.numHashes());
+	  
+	  in.close();
+   }
+}

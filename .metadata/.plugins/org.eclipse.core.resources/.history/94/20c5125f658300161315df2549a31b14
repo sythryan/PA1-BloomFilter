@@ -1,0 +1,99 @@
+// Author: Syth Ryan
+// COMS_535
+
+import java.util.ArrayList;
+import java.util.BitSet;
+import java.util.List;
+
+public class BloomFilterRan {
+	
+	//Required for Random Hashing because it would be hard to redo the hashes exactly. stores random numbers <a, b>
+	List<List<Integer>> hashFunctionValues = new ArrayList<List<Integer>>();
+	static BitSet bloomFilter;
+	static int filterSize;
+	static int numHashFunctions;
+	static long p;
+
+	public BloomFilterRan(int setSize, int bitsPerElement) {
+		java.util.Random randomNumbers = new java.util.Random();
+		
+		p = nextPrime(filterSize); // pick a prime p > size of filter
+		filterSize = setSize * bitsPerElement;
+		bloomFilter = new BitSet(filterSize);
+		numHashFunctions = (int)(Math.log(2.0) * (double)(filterSize) / (double)setSize);
+		
+		if (numHashFunctions == 0) {
+			numHashFunctions = 1;
+		}
+		
+		// Generate hash function <a, b> values
+		for(int i = 0; i < numHashFunctions; i++) {
+			long a = Math.abs(randomNumbers.nextLong());
+			long b = Math.abs(randomNumbers.nextLong());
+			List<Integer> tempList = new ArrayList<Integer>();
+			
+			hashFunctionValues.add(e)
+		}
+	}
+	
+	public void add(String s) {
+		if (appears(s) == false){		
+			for (int i = 0; i < numHashFunctions; i++) {
+				// modding the hash assures us that our index is in bounds of the filter
+				bloomFilter.set(RandomHashCode(p, a, b, s.hashCode() % filterSize));
+				
+			}
+			hashFunctionMap.add(listOfIndexes);
+		}
+	}
+	
+	public boolean appears(String s) {
+		int x = 0;
+		
+		for (int i = 0; i < s.length(); i++) {
+			x+= s.toLowerCase().charAt(i);
+		}
+		
+		// search if string has already been used
+		for (int i = 0; i < hashFunctionMap.size(); i++) {
+			if (x == hashFunctionMap.get(i).get(0)){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public int filterSize() {
+		return filterSize;
+	}
+	
+	public int dataSize() {
+		return hashFunctionMap.size();
+	}
+	
+	public int numHashes() {
+		return numHashFunctions;
+	}
+	
+	private static long RandomHashCode(long p, long a, long b, int x) {
+		return (a * x + b) % p;
+	}
+	
+	private static long nextPrime(long n) {
+	    boolean primeFlag = false;
+	    while (!primeFlag) {
+	        n += 1;
+	        long m = (long) Math.ceil(Math.sqrt(n));
+
+	        primeFlag = true;
+	        for (long i = 2; i <= m; i++) {
+	            if (n % i == 0) {
+	            	primeFlag = false;
+	                break;
+	            } 
+	        }
+	    }
+	    return n;
+	}
+}
+

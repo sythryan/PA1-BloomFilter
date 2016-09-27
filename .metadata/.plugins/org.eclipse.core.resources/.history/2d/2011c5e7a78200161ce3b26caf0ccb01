@@ -1,0 +1,71 @@
+// Author: Syth Ryan
+// COMS_535
+
+import java.math.BigInteger;
+import java.util.*;
+
+public class BloomFilterDet {
+	//long twoPow64 = 9223372036854775807;
+	static BitSet bloomFilter;
+	static int filterSize;
+	static int numHashFunctions;
+	static long theAnswerToLifeTheUniverseAndEverything = 42;
+
+	public BloomFilterDet(int setSize, int bitsPerElement) {
+		
+		filterSize = setSize * bitsPerElement;
+		bloomFilter = new BitSet(filterSize); 
+		numHashFunctions = (int)(Math.log(2.0) * (double)(filterSize) / (double)setSize);
+	}
+	
+	public void add(String s) {
+
+		for (int i = 0; i < numHashFunctions; i++)
+		{
+			// modding the hash assures us that our index is in bounds of the filter
+			bloomFilter.set((int)(DeterministicHashCode(theAnswerToLifeTheUniverseAndEverything + i, s.toLowerCase()) % filterSize));
+		}
+	}
+	
+	public boolean appears(String s) {
+		int trueCount = 0;
+		for (int i = 0; i < numHashFunctions; i++)
+		{
+			if (bloomFilter.get((int)(DeterministicHashCode(theAnswerToLifeTheUniverseAndEverything + i, s.toLowerCase()) % filterSize)))
+			{
+				System.out.println("found: " + i); //debug message
+				trueCount ++;
+			}
+		}
+		if (trueCount == numHashFunctions) {
+			return true;
+		}
+		else{
+			
+		}
+		return false;
+	}
+	
+	public int filterSize() {
+		return filterSize;
+	}
+	
+	public int dataSize() {
+		return bloomFilter.size();
+	}
+	
+	public int numHashes() {
+		return numHashFunctions;
+	}
+	
+	public static long DeterministicHashCode(long FNV64INIT, String s) {
+		long FNV64PRIME = 5;
+		long h = FNV64INIT;
+		
+		for (int i = 0; i < s.length(); i++) {
+			h = h ^ s.charAt(i);
+			h = BigInteger.valueOf(2).modPow(BigInteger.valueOf(64), BigInteger.valueOf(h*FNV64PRIME)).longValue();
+		}
+		return h;
+	}
+}

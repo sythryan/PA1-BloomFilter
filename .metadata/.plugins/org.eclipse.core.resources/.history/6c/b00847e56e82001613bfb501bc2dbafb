@@ -1,0 +1,65 @@
+import java.util.Scanner;
+public class Main {
+
+	static BloomFilterDet DeterministicFilter;
+	
+	public static void main(String[] args) {
+		int choice;
+		int setSize;
+		int bitsPerElement;
+		Scanner in = new Scanner(System.in);
+		String temp;
+		
+		System.out.println("Enter your Set Size");
+		setSize = in.nextInt();
+	
+		System.out.println("Enter your Bits Per Element");
+		bitsPerElement = in.nextInt();
+  
+		DeterministicFilter = new BloomFilterDet(setSize, bitsPerElement);	
+		
+		while (true) {		
+			System.out.println("Please select a number from the list");
+			System.out.println("1 - Add an Element");
+			System.out.println("2 - Find an Element");
+			System.out.println("3 - Number of Hash functions");
+			System.out.println("4 - Filter Size");
+			System.out.println("5 - Data Size");
+			System.out.println("6 - Exit");
+			choice = in.nextInt();
+			int.nextLine();
+			
+			if (choice == 1) {
+				System.out.println("Enter a string element to add");
+				temp = in.nextString();
+				DeterministicFilter.add(temp);
+			}
+			else if (choice == 2) {
+				System.out.println("Enter a string element to find");
+				temp = in.nextLine();
+				System.out.println(DeterministicFilter.appears(temp));
+			}
+			else if (choice == 3) {
+				System.out.println("Number of hash functions needed: " + DeterministicFilter.numHashes());
+			}
+			else if (choice == 4) {
+				System.out.println("Filter Size: " + DeterministicFilter.filterSize());
+			}
+			else if (choice == 5) {
+				System.out.println("Data Size: " + DeterministicFilter.dataSize());
+			}
+			else if (choice == 6) {
+				break;
+			}
+			else
+			{
+				System.out.println("Invalid input");
+			}
+			
+			System.out.println("");
+			System.out.println("");
+	  
+		}
+		in.close();
+   }
+}

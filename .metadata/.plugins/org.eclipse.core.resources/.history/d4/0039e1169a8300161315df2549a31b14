@@ -1,0 +1,36 @@
+import java.io.File;
+import java.io.FileReader;
+import java.io.LineNumberReader;
+import java.util.BitSet;
+
+public class BloomDifferential {
+	
+	File diffFile = new File("DiffFile.txt");
+	BloomFilterRan randomFilter;
+	
+	public BitSet creatFilter() {
+		int setSize = 0;
+		int bitsPerElement = 32; // 32 bits from 4 word phrase
+		
+		// setSize = number of lines
+		
+		BloomFilterRan randomFilter = new BloomFilterRan(setSize, bitsPerElement);
+		return null;
+	}
+	
+	public String retrieveRecord(String key) {
+		return key;
+	}
+	
+	private int countFileLines() {
+		int lineCount = 0;
+		FileReader reader = new FileReader(diffFile);
+	    LineNumberReader numberReader = new LineNumberReader(reader);
+	
+        while (numberReader.readLine() != null){
+        	lineCount++;
+        }
+
+        numberReader.close();
+	}
+}

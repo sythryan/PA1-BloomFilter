@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workingSetManager>
+<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1474998720817_2" label="bloom" name="bloom">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/BloomFilterCOMS_535" type="4"/>
+</workingSet>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1474730213160_0" label="Window Working Set" name="Aggregate for window 1474730213160"/>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1474736661150_1" label="Window Working Set" name="Aggregate for window 1474736661150"/>
+<mruList name="bloom"/>
+</workingSetManager>

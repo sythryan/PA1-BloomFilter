@@ -1,0 +1,18 @@
+import java.util.BitSet;
+
+public class BloomDifferential {
+	
+	BloomFilterRan randomFilter;
+	
+	public BitSet creatFilter() {
+		int setSize = 0;
+		int bitsPerElement = 0;
+		
+		BloomFilterRan randomFilter = new BloomFilterRan(setSize, bitsPerElement);
+		return null;
+	}
+	
+	public String retrieveRecord(String key) {
+		return key;
+	}
+}

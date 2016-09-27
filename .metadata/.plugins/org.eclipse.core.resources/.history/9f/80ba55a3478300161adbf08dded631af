@@ -1,0 +1,32 @@
+
+public class FalsePositives {
+
+	public static void main(String[] args) {
+		
+		int bitsPerElement = 3;
+		int setSize	= 26;
+		
+		BloomFilterDet deterministicFilter = new BloomFilterDet(setSize, bitsPerElement);
+		BloomFilterRan randomFilter = new BloomFilterRan(setSize, bitsPerElement);
+		
+		// fill filters
+		for (int i = 0; i < setSize; i++) {
+			deterministicFilter.add(""+i);
+			randomFilter.add(""+i);
+		}
+		
+		for (int i = 0; i < setSize; i++) {
+			if (deterministicFilter.appears(""+i)) {
+				System.out.println("Found Det");
+			}
+			
+			if (randomFilter.appears(""+i)) {
+				System.out.println("Found Rand");
+			}
+		}
+		
+		
+
+	}
+
+}

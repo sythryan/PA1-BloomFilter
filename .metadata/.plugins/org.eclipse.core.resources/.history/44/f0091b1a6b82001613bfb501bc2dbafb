@@ -1,0 +1,46 @@
+import java.util.*;
+
+public class BloomFilterDet {
+	
+	static ArrayList<String> bloomFilter;
+	static int filterSize;
+	static int numHashFunctions;
+	static int filterIndex = 0;
+
+	public BloomFilterDet(int setSize, int bitsPerElement) {
+		
+		bloomFilter = new ArrayList<String>(setSize * bitsPerElement);
+		numHashFunctions = (int)(Math.log(2.0) * (double)(setSize * bitsPerElement) / (double)setSize); 
+	}
+	
+	public static void add(String s) {
+		if (filterIndex < filterSize) {
+			bloomFilter.add(filterIndex, s.toLowerCase());
+			filterIndex++;
+		}
+	}
+	
+	public static boolean appears(String s) {
+		for (int i = 0; i < bloomFilter.size(); i++)
+		{
+			if (bloomFilter.get(i) == s.toLowerCase())
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public static int filterSize() {
+		return bloomFilter.size();
+	}
+	
+	public static int dataSize() {
+		return bloomFilter.size();
+	}
+	
+	public double numHashes() {
+		return numHashFunctions;
+	}
+	
+}

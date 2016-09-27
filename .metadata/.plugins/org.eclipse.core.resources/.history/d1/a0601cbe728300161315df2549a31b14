@@ -1,0 +1,13 @@
+import java.util.BitSet;
+
+public class BloomDifferential {
+
+	public BitSet creatFilter() {
+		
+		return null;
+	}
+	
+	public String retrieveRecord(String key) {
+		return key;
+	}
+}
