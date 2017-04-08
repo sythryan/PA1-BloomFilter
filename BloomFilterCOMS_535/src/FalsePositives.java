@@ -5,17 +5,13 @@ public class FalsePositives {
 		double randomFalsePositiveAverage = 0.0;
 		double deterministicFalsePositiveAverage = 0.0;
 		
-		int sampleSize = 1000;
+		int sampleSize = 8;
+		int setSize = 100;
 		
 		for (int n = 1; n <= sampleSize; n++)
 		{
-			java.util.Random randomNumbers = new java.util.Random();
-			
-			int bitsPerElement = randomNumbers.nextInt(32);
-			if (bitsPerElement == 0 ){
-				bitsPerElement = 1;
-			}
-			int setSize	= Math.abs(randomNumbers.nextInt(100000));
+			int bitsPerElement = 8;
+			setSize	*= 2;
 			
 			int detFalsePositiveCount = 0;
 			int ranFalsePositiveCount = 0;
